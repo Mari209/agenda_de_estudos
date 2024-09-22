@@ -1,0 +1,87 @@
+/* esse não presta */
+
+:root{
+    --gradient:linear-gradient(90deg, rgb(199, 162, 255), rgb(177, 129, 250));
+  }
+
+*{
+    font-family: 'Nunito', sans-serif;
+    margin:0; padding:0;
+    box-sizing: border-box;
+    outline: none; border:none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .2s ease-out;
+  }
+  
+  header{
+    font-size: 62.5%;
+    overflow-x: hidden;
+  }
+  
+  main{
+    flex: 1;
+  }
+
+  /* do calendario original */
+
+body {
+    margin: 40px 10px;
+    padding: 0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+#calendar {
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+/* fim calendario original */
+
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding:2rem 7%;
+    border-bottom: .1rem solid rgba(0,0,0,.1);
+    position: relative;
+    z-index: 1000;
+    
+  }
+  
+  header .logo{
+    font-size: 2.5rem;
+    color:var(--violet);
+    font-weight: bold;
+  }
+  
+  header .logo span{
+    color: #b45eb0;
+  }
+  
+  header .navbar a{
+    margin-left: 2rem;
+    font-size: 2rem;
+    color:#333;
+    
+  }
+  
+  header .navbar a:hover{
+    color:var(--pink);
+  }
+  
+  .navbar img {
+    width: 50px; /* Ajuste conforme necessário */
+    height: auto;
+    margin-right: -3rem;
+  }
+  
+  .Logo img {
+    width: 50px; /* Ajuste conforme necessário */
+    height: auto;
+    margin-right: 1rem;
+  }
+  
