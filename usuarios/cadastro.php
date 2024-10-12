@@ -14,7 +14,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
     try {
         // Prepara a query para evitar SQL Injection
         $sql = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
-        $stmt = $conn->prepare($sql);
+        $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $hashed_password); // Salva a senha criptografada

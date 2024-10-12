@@ -10,17 +10,19 @@
 
     <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
 
+
     <link href="css/custom.css" rel="stylesheet">
     <title>Calendário</title>
 </head>
 
 <body>
 
+
     <div class="container">
 
-    <header>
+        <header>
             <div class="Logo">
-                <img src="./images/beca.png" alt="logo">
+                <img src="../css/images/beca.png" alt="logo">
                 <a href="#" class="logo">Estude<span> ᨐᵉᵒ﻿ʷ</span></a>
             </div>
 
@@ -86,7 +88,7 @@
 
                             <dt class="col-sm-3">Fim: </dt>
                             <dd class="col-sm-9" id="visualizar_end"></dd>
-
+<!-- 
                             <dt class="col-sm-3">ID do usuário: </dt>
                             <dd class="col-sm-9" id="visualizar_user_id"></dd>
 
@@ -94,7 +96,7 @@
                             <dd class="col-sm-9" id="visualizar_name"></dd>
 
                             <dt class="col-sm-3">E-mail: </dt>
-                            <dd class="col-sm-9" id="visualizar_email"></dd>
+                            <dd class="col-sm-9" id="visualizar_email"></dd>  -->
 
                         </dl>
 
@@ -162,12 +164,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="edit_user_id" class="col-sm-2 col-form-label">Usuário</label>
-                                <div class="col-sm-10">
-                                    <select name="edit_user_id" class="form-control" id="edit_user_id">
-                                        <option value="">Selecione</option>
-                                    </select>
-                                </div>
+                                <input type="hidden" name="edit_user_id" id="edit_user_id" value="<?php echo $_SESSION['user_id']; ?>">
                             </div>
 
                             <button type="button" name="btnViewEvento" class="btn btn-primary"
@@ -249,12 +246,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="cad_user_id" class="col-sm-2 col-form-label">Usuário</label>
-                            <div class="col-sm-10">
-                                <select name="cad_user_id" class="form-control" id="cad_user_id">
-                                    <option value="">Selecione</option>
-                                </select>
-                            </div>
+                            <input type="hidden" name="cad_user_id" id="cad_user_id" value="<?php echo $_SESSION['user_id']; ?>">
                         </div>
 
                         <button type="submit" name="btnCadEvento" class="btn btn-success"
@@ -266,6 +258,7 @@
             </div>
         </div>
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">

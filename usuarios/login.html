@@ -1,62 +1,156 @@
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Login</title>
-    <style>
-        body {
-            background-color: #f2f2f2;
-        }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Site</title>
+    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-        .login {
-            width: 100%;
-            height: 100vh;
-            align-items: center;
-            justify-content: center;
-            display: flex;
-        }
-    </style>
 </head>
 
 <body>
-    <div class="login">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 offset-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3>Faça seu login</h3>
-                        </div>
-                        <div class="card-body">
-                            <form action="login.php" method="POST">
-                                <div>
-                                    <div class="mb-3">
-                                        <label>Email</label>
-                                        <input type="text" name="email" class="form-control">
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="mb-3">
-                                        <label>Senha</label>
-                                        <input type="password" name="password" class="form-control">
-                                    </div>
-                                </div>
 
-                                <div>
-                                    <div class="mb-3">
-                                        <button type="submit" class="btn btn-primary">Enviar</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+    <!-- navbar -->
+
+    <div class="container">
+
+        <header>
+            <div class="Logo">
+                <img src="../css/images/beca.png" alt="logo">
+                <a href="#" class="logo">Estude<span> ᨐᵉᵒ﻿ʷ</span></a>
             </div>
+
+            <div id="menu" class="fas fa-bars"></div>
+
+            <nav class="navbar">
+                <a href="index.html">ínicio</a>
+                <a href="sobre.html">Sobre Nós</a>
+                <a href="review.html">Review</a>
+                <a href="contact.html">Contato</a>
+                <img src="../css/images/tinta.png" alt="logo">
+                <img src="../css/images/beca.png" alt="logo">
+            </nav>
+
+        </header>
+
+        <!-- forms -->
+
+        <div class="wrapper">
+
+            <div class="form-box login">
+                <h2>Login</h2>
+                <form action="login.php" method="POST">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="text" name="email" required />
+                        <label>Email</label>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" name="password" id="password" required />
+                        <label>Senha</label>
+                    </div>
+
+                    <div class="remember-forgot">
+                        <label><input type="checkbox" onclick="togglePassword()" />Relembre-me</label>
+                        <a href="#">Esqueceu a senha?</a>
+                    </div>
+
+                    <button type="submit" class="btn">Login</button>
+                    <div class="login-register">
+                        <p>
+                            Não tem uma conta?<a href="#" class="register-link"> Cadastre-se</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-box register">
+                <h2>Cadastro</h2>
+                <form action="#">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="person"></ion-icon></span> <!-- Corrigido -->
+                        <input type="text" required />
+                        <label>Nome</label>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" required />
+                        <label>Email</label>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" required />
+                        <label>Senha</label>
+                    </div>
+
+                    <div class="remember-forgot">
+                        <label><input type="checkbox" />Eu aceito os termos & condições</label>
+                    </div>
+
+                    <button type="submit" class="btn">Cadastre-se</button>
+                    <div class="login-register">
+                        <p>
+                            Já possui uma conta?<a href="#" class="login-link"> Login</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+
         </div>
+
+        <footer>
+            <section class="footer">
+
+                <div class="box-container">
+
+                    <div class="box">
+                        <h3>Estude meow</h3>
+                        <p>Estamos aqui para facilitar seus estudos! Aprenda mais com o Estude Meow, um grupo
+                            independente de desenvolvedores com o intuito de tornar seus estudos mais produtivos. :3</p>
+                    </div>
+
+                    <div class="box">
+                        <h3>Links</h3>
+                        <a href="#">inicio</a>
+                        <a href="#">Sobre Nós</a>
+                        <a href="#">Review</a>
+                        <a href="#">Contato</a>
+                    </div>
+
+                    <div class="box">
+                        <h3>Redes</h3>
+                        <a href="#">facebook</a>
+                        <a href="#">twitter</a>
+                        <a href="#">instagram</a>
+                    </div>
+
+                    <div class="box">
+                        <h3>Contato</h3>
+                        <p> <i class="fas fa-phone"></i> +55 (11) 94002-8922 </p>
+                        <p> <i class="fas fa-envelope"></i> Meowestude@gmail.com </p>
+                        <p> <i class="fas fa-map-marker-alt"></i> Sp BarangaCity
+                            Rua Fubanga Town 353469 </p>
+                    </div>
+
+                </div>
+
+                <div class="credit"> created by <span> mr. web designer </span> | all rights reserved </div>
+
+            </section>
+
     </div>
+    </footer>
+
+    <script src="../js/login.js"></script>
+    <script src="../js/script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

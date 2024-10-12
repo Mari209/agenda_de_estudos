@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Instanciar FullCalendar.Calendar e atribuir a variável calendar
     var calendar = new FullCalendar.Calendar(calendarEl, {
-
-        events: '/usuarios/pegar_eventos.php', // Endpoint PHP que retorna eventos do usuário logado
+        initialView: 'dayGridMonth',
+        events: 'listar_evento.php', // URL para o arquivo PHP que retorna os eventos
 
         // Incluir o bootstrap 5
         themeSystem: 'bootstrap5',
@@ -25,14 +25,14 @@ document.addEventListener('DOMContentLoaded', function () {
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            right: 'dayGridMonth,timeGridWeek,timeGridDa'
         },
 
         // Definir o idioma usado no calendário
         locale: 'pt-br',
 
         // Definir a data inicial
-        //initialDate: '2023-01-12',
+        // initialDate: '2024-09-26',
         //initialDate: '2023-10-12',
 
         // Permitir clicar nos nomes dos dias da semana 
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         dayMaxEvents: true,
 
         // Chamar o arquivo PHP para recuperar os eventos
-        events: 'listar_evento.php',
+        // events: 'listar_evento.php',
 
         // Identificar o clique do usuário sobre o evento
         eventClick: function (info) {
@@ -68,11 +68,9 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById("visualizar_id").innerText = info.event.id;
             document.getElementById("visualizar_title").innerText = info.event.title;
             document.getElementById("visualizar_obs").innerText = info.event.extendedProps.obs;
-            document.getElementById("visualizar_user_id").innerText = info.event.extendedProps.user_id;
-            document.getElementById("visualizar_name").innerText = info.event.extendedProps.name;
-            document.getElementById("visualizar_email").innerText = info.event.extendedProps.email;
             document.getElementById("visualizar_start").innerText = info.event.start.toLocaleString();
             document.getElementById("visualizar_end").innerText = info.event.end !== null ? info.event.end.toLocaleString() : info.event.start.toLocaleString();
+
 
             // Enviar os dados do evento para o formulário editar
             document.getElementById("edit_id").value = info.event.id;
@@ -85,42 +83,12 @@ document.addEventListener('DOMContentLoaded', function () {
             // Abrir a janela modal visualizar
             visualizarModal.show();
         },
+
+
+
+        
         // Abrir a janela modal cadastrar quando clicar sobre o dia no calendário
         select: async function (info) {
-
-            // Receber o SELETOR do campo usuário do formulário cadastrar
-            var cadUserId = document.getElementById('cad_user_id');
-
-            // Chamar o arquivo PHP responsável em recuperar os usuários do banco de dados
-            const dados = await fetch('listar_usuarios.php');
-
-            // Ler os dados
-            const resposta = await dados.json();
-            //console.log(resposta);
-
-            // Acessar o IF quando encontrar usuário no banco de dados
-            if (resposta['status']) {
-
-                // Criar a opção selecione para o campo select usuários
-                var opcoes = '<option value="">Selecione</option>';
-
-                // Percorrer a lista de usuários
-                for (var i = 0; i < resposta.dados.length; i++) {
-
-                    // Criar a lista de opções para o campo select usuários
-                    opcoes += `<option value="${resposta.dados[i]['id']}">${resposta.dados[i]['name']}</option>`;
-
-                }
-
-                // Enviar as opções para o campo select no HTML
-                cadUserId.innerHTML = opcoes;
-
-            } else {
-
-                // Enviar a opção vazia para o campo select no HTML
-                cadUserId.innerHTML = `<option value=''>${resposta['msg']}</option>`;
-
-            }
 
             // Chamar a função para converter a data selecionada para ISO8601 e enviar para o formulário
             document.getElementById("cad_start").value = converterData(info.start);
@@ -219,10 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     color: resposta['color'],
                     start: resposta['start'],
                     end: resposta['end'],
-                    obs: resposta['obs'],
-                    user_id: resposta['user_id'],
-                    name: resposta['name'],
-                    email: resposta['email'],
+                    obs: resposta['obs']
                 }
 
                 // Adicionar o evento ao calendário
@@ -270,9 +235,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Receber o SELETOR do campo usuário do formulário editar
             var editUserId = document.getElementById('edit_user_id');
-
-            // Chamar o arquivo PHP responsável em recuperar os usuários do banco de dados
-            const dados = await fetch('listar_usuarios.php');
 
             // Ler os dados
             const resposta = await dados.json();
@@ -376,18 +338,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 const eventoExiste = calendar.getEventById(resposta['id']);
 
                 // Verificar se encontrou o evento no FullCalendar pelo id
+                // Verificar se encontrou o evento no FullCalendar pelo id
                 if (eventoExiste) {
 
                     // Atualizar os atributos do evento com os novos valores do banco de dados
                     eventoExiste.setProp('title', resposta['title']);
                     eventoExiste.setProp('color', resposta['color']);
                     eventoExiste.setExtendedProp('obs', resposta['obs']);
-                    eventoExiste.setExtendedProp('user_id', resposta['user_id']);
-                    eventoExiste.setExtendedProp('name', resposta['name']);
-                    eventoExiste.setExtendedProp('email', resposta['email']);
                     eventoExiste.setStart(resposta['start']);
                     eventoExiste.setEnd(resposta['end']);
                 }
+
 
                 // Chamar a função para remover a mensagem após 3 segundo
                 removerMsg();
@@ -460,3 +421,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 });
+

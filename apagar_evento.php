@@ -13,7 +13,7 @@ if (!empty($id)) {
     $query_apagar_event = "DELETE FROM events WHERE id=:id";
 
     // Prepara a QUERY
-    $apagar_event = $conn->prepare($query_apagar_event);
+    $apagar_event = $pdo->prepare($query_apagar_event);
 
     // Substituir o link pelo valor
     $apagar_event->bindParam(':id', $id);
