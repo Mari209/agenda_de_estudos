@@ -1,8 +1,6 @@
 
 <?php
 session_start();
- // Isso deve mostrar os dados da sessão
-
 header('Content-Type: application/json');
 
 // Verifica se o usuário está logado
@@ -11,11 +9,11 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Incluir o arquivo com a conexão com banco de dados
 include_once './conexao.php';
 
 // Obtém o user_id da sessão
 $user_id = $_SESSION['user_id'];
+
 
 // QUERY para recuperar os eventos apenas do usuário logado
 $query_events = "SELECT evt.id, evt.title, evt.color, evt.start, evt.end, evt.obs
@@ -45,8 +43,6 @@ while ($row_events = $result_events->fetch(PDO::FETCH_ASSOC)) {
         'end' => $end,
         'obs' => $row_events['obs']
     ];
-
-
 }
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -54,51 +50,8 @@ error_reporting(E_ALL);
 
 if ($result_events->rowCount() == 0) {
     echo json_encode(['message' => 'Nenhum evento encontrado.']);
- } // else {
+} // else {
 //     echo json_encode('funcionou'); // Retorna os eventos como JSON
 // }
 
 echo json_encode($eventos);
-
-
-
-
-
-// // Incluir o arquivo com a conexão com banco de dados
-// include_once './conexao.php';
-
-// // QUERY para recuperar os eventos
-// $query_events = "SELECT evt.id, evt.title, evt.color, evt.start, evt.end, evt.obs, evt.user_id,
-//                 usr.name, usr.email
-//                 FROM events AS evt
-//                 INNER JOIN users AS usr ON usr.id = evt.user_id";
-
-// // Prepara a QUERY
-// $result_events = $pdo->prepare($query_events);
-
-// // Executar a QUERY
-// $result_events->execute();
-
-// // Criar o array que recebe os eventos
-// $eventos = [];
-
-// // Percorrer a lista de registros retornado do banco de dados
-// while($row_events = $result_events->fetch(PDO::FETCH_ASSOC)){
-
-//     // Extrair o array
-//     extract($row_events);
-
-//     $eventos[] = [
-//         'id' => $id,
-//         'title' => $title,
-//         'color' => $color,
-//         'start' => $start,
-//         'end' => $end,
-//         'obs' => $obs,
-//         'user_id' => $user_id,
-//         'name' => $name,
-//         'email' => $email
-//     ];
-// }
-
-// echo json_encode($eventos);

@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+
+:root {
+  --gradient: linear-gradient(90deg, rgb(199, 162, 255), rgb(177, 129, 250));
+}
+
+* {
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: all 0.2s ease-out;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--gradient);
+  padding: 3rem 2%;
+}
+
+.container {
+  background: #f6e3f2;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.heading {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  margin: 10rem 9rem 0rem 9rem;
+  padding: 2rem;
+  text-align: left;
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+.msg {
+  position: relative;
+  width: 70%;
+}
+
+.msg p {
+  color: #333;
+  padding: 0;
+  padding-left: 11rem;
+  text-align: left;
+  font-size: 2rem;
+}
+
+.msg button {
+  position: absolute;
+  left: 10%;
+  top: 10rem;
+  padding: 0.8rem 4rem;
+  max-width: 25rem;
+  border: solid 2px #000;
+  border-radius: 30rem;
+  background: linear-gradient(90deg, rgb(234, 224, 248), rgb(160, 99, 252));
+  color: #000;
+  cursor: pointer;
+  font-size: 1.7rem;
+  text-align: center;
+  margin: 0rem 0 0 5rem;
+}
+
+.msg button:hover {
+  background: #c7a2ff;
+}
+
+.retangulo-roxo {
+  background-color: #c7a2ff;
+  padding: 5px;
+  width: 100%;
+  border: 3px dotted #b45eb0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.retangulo-roxo .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.retangulo-roxo a {
+  color: #333;
+  font-size: 3rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.retangulo-roxo p {
+  color: #333;
+  font-size: 2rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+.teacher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.carousel {
+  margin-top: -18rem;
+  margin-left: auto;
+  position: relative;
+  width: 35%;
+  height: 32rem;
+  max-width: 600px;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgb(234, 224, 248), rgb(160, 99, 252));
+  border: solid #b45eb0;
+  border-radius: 10%;
+}
+
+.carousel-container {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  min-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.carousel-item img {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  width: 40%;
+  height: auto;
+  border-radius: 50%;
+  padding: 3px;
+  border: solid 3px;
+}
+
+.conteudo {
+  padding: 15px;
+}
+
+.conteudo p {
+  margin: 0;
+  font-size: 1.2rem;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stars {
+  font-size: 3rem;
+  color: gold;
+}
+
+.next,
+.prev {
+  position: absolute;
+  top: 50%;
+  background-color: transparent;
+  color: #000;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 2rem;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.prev {
+  left: 5%;
+}
+
+.next {
+  right: 5%;
+}
+
+
+
+@media (max-width:991px){
+
+    html{
+      font-size: 55%;
+    }
+  
+    body{
+      padding:1.5rem;
+    }
+  
+    header{
+      padding:2rem;
+      
+    }
+  
+    section{
+      padding:2rem;
+    }
+  
+    .navbar img{
+      display: none;
+    }
+  
+    .home .content img {
+      width: 135px;
+    }
+  
+    .heading{
+      background-clip: text;
+      margin: 10rem 9rem 0rem 9rem;
+      padding: 2rem;
+      text-align: left;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+    }  
+  
+    .carousel {
+      margin-top: -18rem;
+      margin-left: auto;
+      position: relative;
+      width: 35%;
+      height: 40%;
+      max-width: 600px;
+      overflow: hidden;
+      background: linear-gradient(90deg, rgb(234, 224, 248), rgb(160, 99, 252));
+      border: solid #b45eb0;
+      border-radius: 10%;
+    
+    }
+  
+  }
+  
+  @media (max-width:768px){
+  
+    #menu{
+      display: initial;
+    }
+  
+    header .navbar{
+      position: absolute;
+      top:100%; left:0; right:0;
+      background:#fff;
+      border-top: .1rem solid rgba(0,0,0,.2);
+      border-bottom: .1rem solid rgba(0,0,0,.2);
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+  
+    header .navbar.active{
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  
+    header .navbar a{
+      font-size: 2.5rem;
+      display: block;
+      margin:2rem 0;
+      text-align:center;
+    }
+  
+    .contact form .inputBox input{
+      width:100%;
+    }
+  
+    .heading{
+      margin-top: 5rem;
+      margin-bottom: 2rem;
+      padding: 2rem 6rem;
+      text-align: center;
+      font-size: 3rem;
+    }
+  
+    .msg {
+      position: relative;
+      width: auto;
+      height: auto;
+      display: flex; 
+      margin: 0;
+      justify-content: center; 
+      align-items: center; 
+    }
+    
+    .msg p {
+      color: #333;
+      background-clip: text;
+      padding: 0;
+      text-align: center; 
+      font-size: 2rem;
+    }
+  
+    .msg button{
+      left: auto;
+      top: 10rem;
+      margin-bottom: 58vh;
+      padding: .8rem 4rem;
+      max-width: 20rem;
+      border: solid 2px #000;
+      border-radius: 30rem;
+      background: linear-gradient(90deg, rgb(234, 224, 248), rgb(160, 99, 252));
+      color: #000;
+      cursor: pointer;
+      font-size: 1.7rem;
+      text-align: center;
+      margin: 0rem 0 0 5rem;
+      max-width: 25rem;
+    }
+    
+    .carousel {
+      top: 12rem;
+      margin: auto;
+      width: 90%;
+      height: 40%;
+      max-width: 600px;
+      overflow: hidden;
+      background: linear-gradient(90deg, rgb(234, 224, 248), rgb(160, 99, 252));
+      border: solid #b45eb0;
+      border-radius: 10%;
+    
+    }
+  
+  }
+  
+  @media (max-width:400px){
+  
+    html{
+      font-size: 50%;
+    }
+  
+    .home .content img {
+      width: 118px;
+    }
+  
+    
+  } 

@@ -3,6 +3,17 @@
 // Incluir o arquivo com a conexão com banco de dados
 include_once './conexao.php';
 
+// Verifique se o usuário está logado e se a sessão contém o 'user_id'
+if (!isset($_SESSION['user_id'])) {
+    echo json_encode(['error' => 'Usuário não autenticado.']);
+    exit;
+}
+
+ // Obtém o user_id da sessão
+ $user_id = $_SESSION['user_id'];
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
 // Receber o id enviado pelo JavaScript
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
@@ -32,3 +43,4 @@ if (!empty($id)) {
 // Converter o array em objeto e retornar para o JavaScript
 echo json_encode($retorna);
 
+}

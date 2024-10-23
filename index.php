@@ -22,7 +22,7 @@
 
         <header>
             <div class="Logo">
-                <img src="../css/images/beca.png" alt="logo">
+                <img src="./css/images/beca.png" alt="logo">
                 <a href="#" class="logo">Estude<span> ᨐᵉᵒ﻿ʷ</span></a>
             </div>
 
@@ -33,8 +33,8 @@
                 <a href="course.html">Sobre Nós</a>
                 <a href="teacher.html">Review</a>
                 <a href="price.html">Contato</a>
-                <img src="./images/tinta.png" alt="logo">
-                <img src="./images/beca.png" alt="logo">
+                <img src="./css/images/tinta.png" alt="logo">
+                <img src="./css/images/beca.png" alt="logo">
             </nav>
 
         </header>

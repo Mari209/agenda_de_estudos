@@ -1,56 +1,57 @@
  <?php
     include_once '../conexao.php';
 
-    // Verifica se os campos estão preenchidos
-    if (empty($_POST["email"]) || empty($_POST["password"])) {
-        header("Location: ../index.php");
-        exit();
-    }
-    session_start();
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $_SESSION['user_id'] = $user_id; 
+        // Verifica se os campos estão preenchidos
+        if (empty($_POST["email"]) || empty($_POST["password"])) {
+            header("Location: ../index.php");
+            exit();
+        }
+        session_start();
 
-    $email = $_POST["email"];
-    $password = $_POST["password"];
+        $_SESSION['user_id'] = $user_id;
 
-    try {
-        // Consulta o usuário pelo email
-        $sql = "SELECT id, name, password FROM users WHERE email = :email";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':email', $email);
+        $email = $_POST["email"];
+        $password = $_POST["password"];
 
-        $stmt->execute();
+        try {
+            // Consulta o usuário pelo email
+            $sql = "SELECT id, name, password FROM users WHERE email = :email";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':email', $email);
 
-        // Se o usuário existe
-        if ($stmt->rowCount() > 0) {
-            $row = $stmt->fetch(PDO::FETCH_OBJ);
+            $stmt->execute();
 
-            // Verifica se a senha está correta
-            if (password_verify($password, $row->password)) {
-                // Armazena o ID e o nome do usuário na sessão
-                $_SESSION["user_id"] = $row->id;
-                $_SESSION["name"] = $row->name;
+            // Se o usuário existe
+            if ($stmt->rowCount() > 0) {
+                $row = $stmt->fetch(PDO::FETCH_OBJ);
 
-                // Redireciona para a página inicial
-                header("Location: ../index.php");
-                exit();
+                // Verifica se a senha está correta
+                if (password_verify($password, $row->password)) {
+                    // Armazena o ID e o nome do usuário na sessão
+                    $_SESSION["user_id"] = $row->id;
+                    $_SESSION["name"] = $row->name;
+
+                    // Redireciona para a página inicial
+                    header("Location: ../index.php");
+                    exit();
+                } else {
+                    // Senha incorreta
+                    echo "<script>alert('Usuário e/ou uuuuuuu senha incorreto(s)');</script>";
+                    echo "<script>location.href='login.html';</script>";
+                    exit();
+                }
             } else {
-                // Senha incorreta
-                echo "<script>alert('Usuário e/ou uuuuuuu senha incorreto(s)');</script>";
+                // Usuário não encontrado
+                echo "<script>alert('Usuário e/ou senha incorreto(s)');</script>";
                 echo "<script>location.href='login.html';</script>";
                 exit();
             }
-        } else {
-            // Usuário não encontrado
-            echo "<script>alert('Usuário e/ou senha incorreto(s)');</script>";
-            echo "<script>location.href='login.html';</script>";
-            exit();
+        } catch (PDOException $e) {
+            die("Erro na consulta: " . $e->getMessage());
         }
-    } catch (PDOException $e) {
-        die("Erro na consulta: " . $e->getMessage());
     }
-
-
     ?>
 
 

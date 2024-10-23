@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação</title>
+</head>
+<body>
+    
+    <form action="avaliacao.php" method="POST">
+        <label for="nota">Nota (1 a 5):</label>
+        <select name="nota" id="nota" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    
+        <label for="comentario">Comentário:</label>
+        <textarea name="comentario" id="comentario" rows="4" required></textarea>
+    
+        <button type="submit">Enviar</button>
+        <!-- <input type="submit" value="Enviar Avaliação"> -->
+    </form>
+    
+
+
+</body>
+</html>
